@@ -27,9 +27,9 @@ rule kallistoQuant:
       r1="{sample}_R1.fastq.gz",
       r2="{sample}_R2.fastq.gz"
     output:
-      "quant/{sample}/abundance.h5",
-      "quant/{sample}/abundance.tsv",
-      "quant/{sample}/run_info.json"
+      "quant/{sample}/output.bus",
+      "quant/{sample}/matrix.ec",
+      "quant/{sample}/transcripts.txt"
     conda:
       "env.yml"
     shell:
