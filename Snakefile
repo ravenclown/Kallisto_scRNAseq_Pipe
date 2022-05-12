@@ -1,5 +1,5 @@
 configfile:"config.yaml"
-
+sc_tech=config["sc_tech"]
 rule all:
     input:
       expand("quant/{sample}/abundance.h5", sample=config["sample"]),
@@ -34,4 +34,4 @@ rule kallistoQuant:
       "env.yml"
     shell:
       "mkdir -p quant && \
-      kallisto quant -i homo_sapiens/transcriptome.idx -o quant/{wildcards.sample} {input.r1} {input.r2}"
+      kallisto bus -i homo_sapiens/transcriptome.idx -o quant/{wildcards.sample} -x {sc_tech} {input.r1} {input.r2}"
