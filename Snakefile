@@ -2,9 +2,9 @@ configfile:"config.yaml"
 sc_tech=config["sc_tech"]
 rule all:
     input:
-      expand("quant/{sample}/abundance.h5", sample=config["sample"]),
-      expand("quant/{sample}/abundance.tsv", sample=config["sample"]),
-      expand("quant/{sample}/run_info.json", sample=config["sample"])
+      expand("quant/{sample}/output.bus", sample=config["sample"]),
+      expand("quant/{sample}/matrix.ec", sample=config["sample"]),
+      expand("quant/{sample}/transcripts.txt", sample=config["sample"])
 
 rule downloadKallistoIndex:
     output:
