@@ -16,7 +16,7 @@ rule get_SRA_by_accession:
     log:
         "reads/{accession}.log"
     conda:
-        "sra_env.yml"
+        "env.yml"
     shell:
         'mkdir -p {params.accession}_reads && '
         'fasterq-dump {params.args} {params.accession} -O reads/'
