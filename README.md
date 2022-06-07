@@ -1,4 +1,4 @@
-# Kallisto_snakemake
+# scRNAseq count matrix pipeline using Kallisto
 basic RNAseq quantification in snakemake using trascriptome index
 # Usage
 <code> snakemake --use-conda -j {threads}
