@@ -8,18 +8,18 @@ rule all:
 
 rule get_SRA_by_accession:
     output:
-        temp("reads/{accession}_1.fastq"),
-        temp("reads/{accession}_2.fastq")
+        temp("reads/{sample}_1.fastq"),
+        temp("reads/{sample}_2.fastq")
     params:
         args = "--split-files --progress --details",
-        accession = "{accession}"
+        sample = "{sample}"
     log:
-        "reads/{accession}.log"
+        "reads/{sample}.log"
     conda:
         "env.yml"
     shell:
-        'mkdir -p {params.accession}_reads && '
-        'fasterq-dump {params.args} {params.accession} -O reads/'
+        'mkdir -p {params.sample_reads && '
+        'fasterq-dump {params.args} {params.sample} -O reads/'
 
 
 rule downloadKallistoIndex:
@@ -40,8 +40,8 @@ rule kallistoBus:
       "homo_sapiens/Homo_sapiens.GRCh38.cdna.all.fa",
       "homo_sapiens/transcriptome.idx",
       "homo_sapiens/transcripts_to_genes.txt",
-      expand("reads/{accession}_1.fastq", accession=config["accession"]),
-      expand("reads/{accession}_2.fastq", accession=config["accession"])
+      expand("reads/{sample}_1.fastq", accession=config["accession"]),
+      expand("reads/{sample}_2.fastq", accession=config["accession"])
     output:
       "bus/{sample}/output.bus",
       "bus/{sample}/matrix.ec",
